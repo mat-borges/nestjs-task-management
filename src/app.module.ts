@@ -1,6 +1,6 @@
+import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
-import { Task } from './tasks/task.entity';
 import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -20,6 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true, // Note: set to false in production
     }),
     TasksModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
