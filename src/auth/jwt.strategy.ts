@@ -5,20 +5,27 @@ import { UsersRepository } from './users.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtPayload } from './jwt-payload.interface';
 import { User } from './user.entity';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     @InjectRepository(UsersRepository)
     private usersRepository: UsersRepository,
+    private configService: ConfigService,
   ) {
     super({
-      secretOrKey: process.env.JWT_SECRET || 'defaultSecretKey',
+      secretOrKey:
+        configService.get('JWT_SECRET') ??
+        (() => {
+          throw new Error('JWT_SECRET is not defined in environment');
+        })(),
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     });
   }
 
   async validate(payload: JwtPayload): Promise<User> {
+    console.log('Validating JWT payload:', payload);
     const { username } = payload;
     const user = await this.usersRepository.findOne({ where: { username } });
 

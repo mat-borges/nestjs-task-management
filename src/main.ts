@@ -13,7 +13,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(process.env.PORT ?? 3000);
 
-  logger.log(`Application is running on: ${await app.getUrl()}`);
+  logger.log(`Application is running on Port: ${process.env.PORT ?? 3000}`);
 }
 
 bootstrap();
