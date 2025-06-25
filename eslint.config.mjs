@@ -45,6 +45,9 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'warn',
       '@typescript-eslint/no-unsafe-member-access': 'warn',
+      '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/interface-name-prefix': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
       // Prettier rules
       'prettier/prettier': 'error',
     },
