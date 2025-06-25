@@ -1,15 +1,11 @@
 import * as bcrypt from 'bcrypt';
 
-import {
-  ConflictException,
-  Injectable,
-  InternalServerErrorException,
-  Logger,
-} from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
+import { Injectable, Logger } from '@nestjs/common';
 
 import { AuthCredentialsDto } from './DTO/auth-credentials.dto';
 import { User } from './user.entity';
+import { logUnknownError } from 'src/common/utils/log-error.util';
 
 @Injectable()
 export class UsersRepository extends Repository<User> {
@@ -29,16 +25,7 @@ export class UsersRepository extends Repository<User> {
     try {
       await this.save(user);
     } catch (error) {
-      this.logger.error(
-        `Failed to create user "${username}". Error: ${error.message}`,
-        error.stack,
-      );
-
-      if (error.code === '23505') {
-        throw new ConflictException('Username already exists');
-      } else {
-        throw new InternalServerErrorException('Error creating user');
-      }
+      logUnknownError(this.logger, 'create user', { username }, '', error);
     }
   }
 }
