@@ -12,7 +12,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     @InjectRepository(UsersRepository)
     private usersRepository: UsersRepository,
-    private configService: ConfigService,
+    configService: ConfigService,
   ) {
     super({
       secretOrKey:
@@ -25,7 +25,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: JwtPayload): Promise<User> {
-    console.log('Validating JWT payload:', payload);
     const { username } = payload;
     const user = await this.usersRepository.findOne({ where: { username } });
 

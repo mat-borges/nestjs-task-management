@@ -4,7 +4,7 @@ export class AuthCredentialsDto {
   @IsString()
   @MinLength(4)
   @MaxLength(20)
-  username: string;
+  username!: string;
 
   @IsString()
   @MinLength(8)
@@ -13,5 +13,5 @@ export class AuthCredentialsDto {
     message:
       'Password is too weak (must contain at least one uppercase letter, one lowercase letter, one number or special character.)',
   })
-  password: string;
+  password!: string;
 }

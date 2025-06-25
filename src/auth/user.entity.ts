@@ -12,20 +12,20 @@ import { Task } from 'src/tasks/task.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column({ unique: true })
-  username: string;
+  username!: string;
 
   @Column()
-  password: string;
+  password!: string;
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @OneToMany((_type) => Task, (task) => task.user, { eager: true })
-  tasks: Task[];
+  tasks!: Task[];
 }
