@@ -35,7 +35,10 @@ export class Task {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne((_type) => User, (user) => user.tasks, { eager: false })
+  @ManyToOne((_type) => User, (user) => user.tasks, {
+    eager: false,
+    nullable: false,
+  })
   @Exclude({ toPlainOnly: true })
   user: User;
 }
