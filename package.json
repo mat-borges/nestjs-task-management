@@ -2,9 +2,9 @@
   "name": "nestjs-task-management",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Mateus Borges",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT License",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
