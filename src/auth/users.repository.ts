@@ -5,7 +5,7 @@ import { Injectable, Logger } from '@nestjs/common';
 
 import { AuthCredentialsDto } from './DTO/auth-credentials.dto';
 import { User } from './user.entity';
-import { logUnknownError } from 'src/common/utils/log-error.util';
+import { logUnknownError } from '../common/utils/log-error.util';
 
 @Injectable()
 export class UsersRepository extends Repository<User> {

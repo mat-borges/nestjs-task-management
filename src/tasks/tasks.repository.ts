@@ -5,8 +5,8 @@ import { CreateTaskDto } from './DTO/create-task.dto';
 import { GetTasksFilterDto } from './DTO/get-tasks-filter.dto';
 import { Task } from './task.entity';
 import { TaskStatus } from './task-status.enum';
-import { User } from 'src/auth/user.entity';
-import { logUnknownError } from 'src/common/utils/log-error.util';
+import { User } from '../auth/user.entity';
+import { logUnknownError } from '../common/utils/log-error.util';
 
 @Injectable()
 export class TaskRepository extends Repository<Task> {
